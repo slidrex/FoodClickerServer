@@ -1,0 +1,40 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: foodlicker
+      #username : root
+      #password : root
+      
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/food_clicker_db
+    username: root
+    password: capybara333
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: GAME-SERVICE
+
+server:
+  port:
+    8080
+
+application:
+  ascention:
+    prestige-level-money-treshold: 10000 #10k 
+  mail-dispatcher:
+    inbox: dinamiker4@gmail.com
+    password: zpmtahegfpsnpsqb
+    subject: dinamiker45
+    host: smtp.gmail.com
+    port: 587
+  security:
+    jwt:
+      secret-key:
+        9o8judo5isa23DsxJOP2sdasA11D34scvSDQUKUIhf23kia

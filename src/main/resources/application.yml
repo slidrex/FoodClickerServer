@@ -27,7 +27,7 @@ server:
 
 application:
   ascention:
-    prestige-level-money-treshold: 10000 #10k 
+    prestige-level-money-treshold: 10 #10k 
   mail-dispatcher:
     inbox: dinamiker4@gmail.com
     password: zpmtahegfpsnpsqb

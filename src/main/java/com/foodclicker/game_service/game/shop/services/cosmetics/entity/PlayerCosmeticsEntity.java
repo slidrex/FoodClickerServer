@@ -18,7 +18,7 @@ public class PlayerCosmeticsEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-    @OneToOne(mappedBy = "cosmetics")
+    @OneToOne(mappedBy = "cosmetics", orphanRemoval = true, cascade = CascadeType.ALL)
     private PlayerEquippedCosmeticsEntity equippedCosmetics;
     private int groupId;
     private int itemId;

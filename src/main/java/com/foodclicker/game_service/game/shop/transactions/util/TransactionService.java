@@ -28,10 +28,11 @@ public class TransactionService {
         } else throw new NotEnoughMoneyException();
     }
     @Transactional
-    public void resetPlayerMoney() throws UnknownUserException {
+    public void prestigeAccount() throws UnknownUserException {
         var user = identityUtil.getIncomingUser();
         var stats = user.getPlayerStats();
         stats.setMoney(0);
+        stats.setPrestigeLevel(stats.getPrestigeLevel() + 1);
         playerStatsRepository.save(stats);
     }
 }

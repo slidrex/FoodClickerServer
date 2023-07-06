@@ -2,8 +2,13 @@ package com.foodclicker.game_service.game.shop.services.cosmetics.service;
 
 import com.foodclicker.game_service.food_id.identity_service.exception.UnknownUserException;
 import com.foodclicker.game_service.food_id.identity_service.util.IdentityUtil;
+import com.foodclicker.game_service.game.reset.ascention.exception.NotEnoughPrestigeLevel;
+import com.foodclicker.game_service.game.reset.ascention.service.AscentionService;
+import com.foodclicker.game_service.game.reset.ascention.util.AscensionUtil;
+import com.foodclicker.game_service.game.shop.services.cosmetics.document.CosmeticsDocument;
 import com.foodclicker.game_service.game.shop.services.cosmetics.document.CosmeticsGroupElement;
 import com.foodclicker.game_service.game.shop.services.cosmetics.dto.BuyCosmeticsRequest;
+import com.foodclicker.game_service.game.shop.services.cosmetics.dto.BuyCosmeticsResponse;
 import com.foodclicker.game_service.game.shop.services.cosmetics.dto.EquipCosmeticsRequest;
 import com.foodclicker.game_service.game.shop.services.cosmetics.entity.PlayerCosmeticsEntity;
 import com.foodclicker.game_service.game.shop.services.cosmetics.entity.PlayerEquippedCosmeticsEntity;
@@ -14,6 +19,7 @@ import com.foodclicker.game_service.game.shop.services.cosmetics.model.PlayerCos
 import com.foodclicker.game_service.game.shop.services.cosmetics.repository.PlayerCosmeticsRepository;
 import com.foodclicker.game_service.game.shop.services.cosmetics.repository.PlayerEquippedCosmeticsRepository;
 import com.foodclicker.game_service.game.shop.services.cosmetics.util.CosmeticsDocumentUtil;
+import com.foodclicker.game_service.game.shop.services.production.dto.PlayerStatsResponse;
 import com.foodclicker.game_service.game.shop.transactions.exception.NotEnoughMoneyException;
 import com.foodclicker.game_service.game.shop.transactions.util.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +39,24 @@ public class CosmeticsService {
     @Autowired
     private PlayerCosmeticsRepository playerCosmeticsRepository;
     @Autowired
+    private AscensionUtil ascensionUtil;
+    @Autowired
     private PlayerEquippedCosmeticsRepository equippedCosmeticsRepository;
-    public PlayerCosmeticsModel buyCosmetics(BuyCosmeticsRequest request) throws UnknownUserException, ItemAlreadyOwnedException, UnknownCosmeticsTemplateException, NotEnoughMoneyException {
+    public BuyCosmeticsResponse buyCosmetics(BuyCosmeticsRequest request) throws UnknownUserException, ItemAlreadyOwnedException, UnknownCosmeticsTemplateException, NotEnoughMoneyException, NotEnoughPrestigeLevel {
         var user = identityUtil.getIncomingUser();
         var playerCosmetics = user.getPlayerCosmetics();
+        
         if(playerCosmetics.stream().anyMatch(x -> x.getItemId() == request.getItemId() && x.getGroupId() == request.getGroupId())) throw new ItemAlreadyOwnedException();
         var documentElement = cosmeticsDocumentUtil.getCosmeticsElement(request.getGroupId(), request.getItemId());
+        
+        ascensionUtil.hasEnoughPrestigeLevel(user, documentElement.getMinPrestige());
         
         transactionService.trySpendMoney(user, documentElement.getPrice());
         
         var cosmetics = new PlayerCosmeticsEntity(user, request.getGroupId(), request.getItemId());
         playerCosmeticsRepository.save(cosmetics);
-        
-        return new PlayerCosmeticsModel(request.getGroupId(), request.getItemId());
+        var model = new PlayerCosmeticsModel(request.getGroupId(), request.getItemId());
+        return new BuyCosmeticsResponse( model, new PlayerStatsResponse( user.getPlayerStats()) );
     }
     public List<PlayerCosmeticsModel> getPlayerGroupCosmetics(int groupId) throws UnknownUserException {
         var user = identityUtil.getIncomingUser();
@@ -111,6 +122,45 @@ public class CosmeticsService {
             iterGroup.getItems().add(new CosmeticsGroupedItemModel(playerCosmetic.getItemId()));
             responseItems.set(iterGroupId, iterGroup);
         }
+        for(int i = 0; i < responseItems.size(); i++) {
+            var defaultModel = new CosmeticsGroupedItemModel(0);
+            if(responseItems.get(i) == null) responseItems.set(i, new PlayerCosmeticsGroupModel(0, List.of(defaultModel)));
+        }
         return responseItems;
+    }
+    public List<PlayerCosmeticsModel> getPlayerEquippedCosmetics() throws UnknownUserException {
+        var user = identityUtil.getIncomingUser();
+        var models = new ArrayList<PlayerCosmeticsModel>();
+        for (var entity:
+             user.getEquippedCosmetics()) {
+            models.add(new PlayerCosmeticsModel(entity));
+        }
+        return models;
+    }
+    public List<CosmeticsGroupedItemModel> getPlayerReadyItems(int groupId) throws UnknownCosmeticsTemplateException, UnknownUserException {
+        var user = identityUtil.getIncomingUser();
+        var allGroupItems = CosmeticsDocument.getGroupById(cosmeticsDocumentUtil.getCosmeticsDocument(), groupId);
+        var userCosmetics = user.getPlayerCosmetics();
+        var playerStats = user.getPlayerStats();
+        var response = new ArrayList<CosmeticsGroupedItemModel>();
+        var docItems = cosmeticsDocumentUtil.getAllItems();
+        
+        for (var doc:
+                allGroupItems) {
+            if(doc.getPrice() <= playerStats.getMoney()){
+                var model = new CosmeticsGroupedItemModel(doc.getItemId());
+                response.add(model);   
+            }
+        }
+        var playerGroupedItems = new ArrayList<Integer>();
+        for (var playerCosm:
+             userCosmetics) {
+            if(playerCosm.getGroupId() == groupId)
+                playerGroupedItems.add(playerCosm.getItemId());
+        }
+        
+        response.removeIf(x -> playerGroupedItems.contains(x.getItemId()));
+        
+        return response;
     }
 }

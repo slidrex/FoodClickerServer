@@ -32,7 +32,7 @@ public class UserEntity implements UserDetails {
     private List<PlayerCosmeticsEntity> cosmeticsObjects;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PlayerProductionEntity> userProductions;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PlayerCosmeticsEntity> playerCosmetics;
     @OneToMany(mappedBy = "user")
     private List<PlayerEquippedCosmeticsEntity> equippedCosmetics;

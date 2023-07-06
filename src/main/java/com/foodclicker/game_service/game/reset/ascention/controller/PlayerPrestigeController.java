@@ -20,6 +20,10 @@ public class PlayerPrestigeController {
     private ResponseEntity<?> makePrestige() throws NotEnoughMoneyException, UnknownUserException, UnknownProductionTemplateId {
         return ResponseEntity.ok(ascentionService.makePrestige());
     }
+    @GetMapping("get_prestige_level")
+    private ResponseEntity<?> getPrestige() throws UnknownUserException {
+        return ResponseEntity.ok(ascentionService.getPrestigeLevel());
+    }
     @GetMapping("get_ascention_price")
     private ResponseEntity<?> getAscentionPrice() {
         return ResponseEntity.ok(ascentionService.getAscentionPrice());

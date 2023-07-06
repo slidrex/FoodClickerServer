@@ -48,9 +48,9 @@ public class IdentityService {
         if(user.isEmpty())
         {
             var userEntity = new UserEntity(request.getEmail());
-            var playerStats = new PlayerStats(userEntity, 0, 0, 1);
+            var playerStats = new PlayerStats(userEntity, 0, 0, 1, 0);
             var authToken = new AuthToken(accessToken, userEntity);
-
+            
 
             userRepository.save(userEntity);
             playerStatsRepository.save(playerStats);

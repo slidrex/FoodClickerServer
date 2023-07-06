@@ -19,11 +19,13 @@ public class PlayerStats {
     @JoinColumn(name = "user_id")
     private UserEntity user;
     private int money;
+    private int prestigeLevel;
     private Integer gps;
     private Integer gpc;
 
-    public PlayerStats(UserEntity user, int money, Integer gps, Integer gpc) {
+    public PlayerStats(UserEntity user, int money, Integer gps, Integer gpc, int prestigeLevel) {
         this.user = user;
+        this.prestigeLevel = prestigeLevel;
         this.money = money;
         this.gps = gps;
         this.gpc = gpc;

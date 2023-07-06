@@ -10,10 +10,14 @@ import com.foodclicker.game_service.food_id.identity_service.repository.TokenRep
 import com.foodclicker.game_service.food_id.identity_service.repository.UserRepository;
 import com.foodclicker.game_service.game.shop.transactions.entity.PlayerStats;
 import com.foodclicker.game_service.game.shop.transactions.repository.PlayerStatsRepository;
+import com.foodclicker.game_service.game.social.player_profile.entity.PlayerProfileEntity;
+import com.foodclicker.game_service.game.social.player_profile.repository.PlayerProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
+
+import java.sql.Date;
 
 @Service
 public class IdentityService {
@@ -27,6 +31,8 @@ public class IdentityService {
     private JwtService jwtService;
     @Autowired
     private PlayerStatsRepository playerStatsRepository;
+    @Autowired
+    private PlayerProfileRepository playerProfileRepository;
     public LoginResponse authenticate(LoginRequest request) throws InvalidCodeOrSessionExpiredException, InvalidCredentialsException {
         //request.setEmail(request.getEmail().substring(0, request.getEmail().length() - 1));
         var code = redisTemplate.opsForValue().get(request.getEmail());
@@ -50,9 +56,11 @@ public class IdentityService {
             var userEntity = new UserEntity(request.getEmail());
             var playerStats = new PlayerStats(userEntity, 0, 0, 1, 0);
             var authToken = new AuthToken(accessToken, userEntity);
-            
+            var profile = new PlayerProfileEntity(userEntity);
 
+            
             userRepository.save(userEntity);
+            playerProfileRepository.save(profile);
             playerStatsRepository.save(playerStats);
             tokenRepository.save(authToken);
         }

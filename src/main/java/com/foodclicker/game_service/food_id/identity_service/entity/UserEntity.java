@@ -4,6 +4,7 @@ import com.foodclicker.game_service.game.shop.services.cosmetics.entity.PlayerCo
 import com.foodclicker.game_service.game.shop.services.cosmetics.entity.PlayerEquippedCosmeticsEntity;
 import com.foodclicker.game_service.game.shop.services.production.entity.PlayerProductionEntity;
 import com.foodclicker.game_service.game.shop.transactions.entity.PlayerStats;
+import com.foodclicker.game_service.game.social.player_profile.entity.PlayerProfileEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,8 @@ public class UserEntity implements UserDetails {
     private List<PlayerCosmeticsEntity> playerCosmetics;
     @OneToMany(mappedBy = "user")
     private List<PlayerEquippedCosmeticsEntity> equippedCosmetics;
+    @OneToOne(mappedBy = "user")
+    private PlayerProfileEntity profile;
     public UserEntity(String email) {
         this.email = email;
     }

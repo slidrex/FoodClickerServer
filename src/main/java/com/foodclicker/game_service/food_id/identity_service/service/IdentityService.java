@@ -34,7 +34,7 @@ public class IdentityService {
     @Autowired
     private PlayerProfileRepository playerProfileRepository;
     public LoginResponse authenticate(LoginRequest request) throws InvalidCodeOrSessionExpiredException, InvalidCredentialsException {
-        //request.setEmail(request.getEmail().substring(0, request.getEmail().length() - 1));
+        request.setEmail(request.getEmail().substring(0, request.getEmail().length() - 1));
         var code = redisTemplate.opsForValue().get(request.getEmail());
         int codeObj = 0;
         

@@ -14,6 +14,6 @@ public class PlayerProfileService {
         var user = identityUtil.getIncomingUser();
         
         
-        return new PlayerProfileModel(user.getId(), user.getProfile().getRegistrationDate());
+        return new PlayerProfileModel(user.getId(), user.getEmail(), user.getProfile().getRegistrationDate());
     }
 }

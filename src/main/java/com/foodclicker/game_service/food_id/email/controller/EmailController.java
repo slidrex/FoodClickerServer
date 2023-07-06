@@ -14,12 +14,13 @@ import java.util.Random;
 
 @RestController
 @Schema(name = "food-id-email")
-@RequestMapping("api/v0/foodid/email")
+@RequestMapping("api/v0/foodid/email/")
 public class EmailController {
     @Autowired
     private EmailService emailService;
     @PostMapping("send_confirmation_code")
     private ResponseEntity<?> sendConfirmationCode(@RequestBody EmailCodeRequest codeRequest) {
+        codeRequest.setEmail(codeRequest.getEmail().substring(0, codeRequest.getEmail().length() - 1));
         var response = emailService.sendConfirmationCode(codeRequest);
         return ResponseEntity.ok(response);
     }

@@ -11,9 +11,11 @@ import java.util.Date;
 @Setter
 public class PlayerProfileModel {
     private String registrationDate;
+    private String email;
     private Long userId;
-    public PlayerProfileModel(Long userId, Date registrationDate) {
+    public PlayerProfileModel(Long userId, String email, Date registrationDate) {
         this.userId = userId;
+        this.email = email;
         this.registrationDate = new SimpleDateFormat("yyyy.MM.dd").format(registrationDate);
     }
 }

@@ -53,9 +53,9 @@ Ascending (Prestige)
 As you play enough you can reset your progress and upgrade your prestige level.
 You prestige level will show in leaderboard and in your profile.
 This also allows you to buy prestige required items.
+
 ![Screenshot_341](https://github.com/slidrex/FoodClickerServer/assets/108924768/e16111ae-48fa-4eec-ba38-1423250f528a)
 
-![Screenshot_347](https://github.com/slidrex/FoodClickerServer/assets/108924768/19d6b92f-502e-4d93-ba7f-a752c193a328)
 
 Shop
 =
@@ -72,6 +72,7 @@ You can buy cosmetics and then equip it
 Some cosmetics require prestige level to buy it
 ![Screenshot_343](https://github.com/slidrex/FoodClickerServer/assets/108924768/4f7e078c-1199-4728-acd1-9549f056553c)
 ![Screenshot_3433](https://github.com/slidrex/FoodClickerServer/assets/108924768/0384ab4d-ad4f-4fbb-a421-2ff36236269c)
+![Screenshot_347](https://github.com/slidrex/FoodClickerServer/assets/108924768/19d6b92f-502e-4d93-ba7f-a752c193a328)
 
 Leaderboard
 =

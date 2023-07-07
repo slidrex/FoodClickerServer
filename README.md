@@ -35,11 +35,13 @@ Game Spoilers (no graphics)
 
 Food ID
 =
+Authentication system. You enter your e-mail then confirm it with the code
+and then you can proceed. System doesn't use password
 ![251656986-d4b248aa-9c2a-443d-8b5e-00735bdb1767](https://github.com/slidrex/FoodClickerServer/assets/108924768/93c9802c-e3ac-44f0-9794-4a7601d6c830)
 ![251657267-60f2d5fb-7717-4b87-a5b5-a1c297c104d2](https://github.com/slidrex/FoodClickerServer/assets/108924768/405d2065-90cb-4703-8c53-32cc1dfd090b)
 
-Authentication system. You enter your e-mail then confirm it with the code
-and then you can proceed. System doesn't use password
+In-Game screen
+=
 
 ![Screenshot_340](https://github.com/slidrex/FoodClickerServer/assets/108924768/49e26772-9134-44dc-ad6c-276a012a2c77)
 

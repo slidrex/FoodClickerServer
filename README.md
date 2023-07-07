@@ -48,4 +48,5 @@ Server is monolothic but as the project grows it will likely become microservice
 this list will include Apache Kafka and Spring Cloud with Netflix Eureka.
 
 Available Endpoints
+=
 ![image](https://github.com/slidrex/FoodClickerServer/assets/108924768/af3a9d8f-9199-42d0-9860-fcc855107c57)

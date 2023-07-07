@@ -34,19 +34,50 @@ Game Spoilers (no graphics)
 =
 GPS - Gold per second
 GPC - Gold per click
+![Screenshot_340](https://github.com/slidrex/FoodClickerServer/assets/108924768/49e26772-9134-44dc-ad6c-276a012a2c77)
 
-<h>Food ID</h>
-![image](https://github.com/slidrex/FoodClickerServer/assets/108924768/d4b248aa-9c2a-443d-8b5e-00735bdb1767)
+Food ID
+=
+![251656986-d4b248aa-9c2a-443d-8b5e-00735bdb1767](https://github.com/slidrex/FoodClickerServer/assets/108924768/93c9802c-e3ac-44f0-9794-4a7601d6c830)
+![251657267-60f2d5fb-7717-4b87-a5b5-a1c297c104d2](https://github.com/slidrex/FoodClickerServer/assets/108924768/405d2065-90cb-4703-8c53-32cc1dfd090b)
+
 Authentication system. You enter your e-mail then confirm it with the code
 and then you can proceed. System doesn't use password
-![image](https://github.com/slidrex/FoodClickerServer/assets/108924768/60f2d5fb-7717-4b87-a5b5-a1c297c104d2)
 
-<h>Ascending (Prestige)
+
+Ascending (Prestige)
+=
 As you play enough you can reset your progress and upgrade your prestige level.
 You prestige level will show in leaderboard and in your profile.
 This also allows you to buy prestige required items.
 ![Screenshot_341](https://github.com/slidrex/FoodClickerServer/assets/108924768/72929b8c-14cb-4625-aa3b-d16de3baa161)
+![Screenshot_347](https://github.com/slidrex/FoodClickerServer/assets/108924768/19d6b92f-502e-4d93-ba7f-a752c193a328)
 
+Shop
+=
+Production
+
+You can buy production to earn more money per click or per second.
+You may buy unlimited count of productions but the price will also increase by formula (BASE_PRICE * 1.15^level).
+
+![Screenshot_342](https://github.com/slidrex/FoodClickerServer/assets/108924768/902d9ad7-17c3-47c7-883b-6de91f5774bb)
+
+Cosmetics
+
+You can buy cosmetics and then equip it
+Some cosmetics require prestige level to buy it
+![Screenshot_343](https://github.com/slidrex/FoodClickerServer/assets/108924768/4f7e078c-1199-4728-acd1-9549f056553c)
+![Screenshot_3433](https://github.com/slidrex/FoodClickerServer/assets/108924768/0384ab4d-ad4f-4fbb-a421-2ff36236269c)
+
+Leaderboard
+=
+As you play and increase your progress you can enter Top 10 Players in game by net worth.
+Also, you can increase your prestige level and it will be shown to others
+![Screenshot_344](https://github.com/slidrex/FoodClickerServer/assets/108924768/7f669442-e201-425c-8954-ac9e4922defc)
+
+Your Profile
+=
+![Screenshot_346](https://github.com/slidrex/FoodClickerServer/assets/108924768/633d63b3-3369-4add-bf80-2160d1e7a248)
 
 Server features:
 Used Tools (Server only)

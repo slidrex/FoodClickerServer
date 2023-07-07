@@ -32,9 +32,9 @@ you will be able to get only if you reset your progress and start a new game fro
 
 Game Spoilers (no graphics)
 =
+![Screenshot_340](https://github.com/slidrex/FoodClickerServer/assets/108924768/49e26772-9134-44dc-ad6c-276a012a2c77)
 GPS - Gold per second
 GPC - Gold per click
-![Screenshot_340](https://github.com/slidrex/FoodClickerServer/assets/108924768/49e26772-9134-44dc-ad6c-276a012a2c77)
 
 Food ID
 =

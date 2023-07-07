@@ -47,6 +47,10 @@ Authentication
 Server is monolothic but as the project grows it will likely become microservice so
 this list will include Apache Kafka and Spring Cloud with Netflix Eureka.
 
+Database Schema
+=
+![Untitled Diagram drawio](https://github.com/slidrex/FoodClickerServer/assets/108924768/34659b11-2c3d-4589-aa4e-26d91d4144af)
+
 Available Endpoints
 =
 ![image](https://github.com/slidrex/FoodClickerServer/assets/108924768/af3a9d8f-9199-42d0-9860-fcc855107c57)

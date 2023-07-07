@@ -78,6 +78,7 @@ Leaderboard
 =
 As you play and increase your progress you can enter Top 10 Players in game by net worth.
 Also, you can increase your prestige level and it will be shown to others
+
 ![Screenshot_344](https://github.com/slidrex/FoodClickerServer/assets/108924768/7f669442-e201-425c-8954-ac9e4922defc)
 
 Your Profile
